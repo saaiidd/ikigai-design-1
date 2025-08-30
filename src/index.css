@@ -170,7 +170,7 @@
   .btn-surveillance {
     @apply font-surveillance uppercase tracking-wider text-sm;
     @apply border border-foreground bg-transparent px-6 py-2;
-    @apply transition-all duration-[var(--hover-duration)];
+    @apply transition-all duration-150;
     @apply hover:bg-foreground hover:text-background;
     @apply focus:outline-none focus:ring-1 focus:ring-foreground;
   }
@@ -219,7 +219,7 @@
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, transparent, hsl(var(--scanning-line) / 0.6), transparent);
-    animation: scan var(--scan-duration) linear infinite;
+    animation: scan 2s linear infinite;
     z-index: 2;
   }
 
@@ -271,23 +271,23 @@
 
   /* Glitch Effects */
   .glitch-hover:hover {
-    animation: glitch var(--glitch-duration) linear;
+    animation: glitch 120ms linear;
   }
 
   /* Navigation Underline */
   .nav-link {
-    @apply relative transition-colors duration-[var(--hover-duration)];
+    @apply relative transition-colors duration-150;
   }
 
   .nav-link::after {
     content: '';
     @apply absolute bottom-0 left-0 w-full h-px bg-foreground;
-    @apply scale-x-0 transition-transform duration-[var(--hover-duration)] origin-right;
+    @apply scale-x-0 transition-transform duration-150 origin-right;
   }
 
   .nav-link:hover::after {
     @apply scale-x-100 origin-left;
-    animation: nav-glitch var(--glitch-duration) linear var(--hover-duration);
+    animation: nav-glitch 120ms linear 150ms;
   }
 
   /* EXIF Overlay */
@@ -333,11 +333,11 @@
 
   /* Animation Utilities */
   .animate-scan {
-    animation: scan var(--scan-duration) linear infinite;
+    animation: scan 2s linear infinite;
   }
 
   .animate-glitch {
-    animation: glitch var(--glitch-duration) linear;
+    animation: glitch 120ms linear;
   }
 
   /* Responsive Grid */

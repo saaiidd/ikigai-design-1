@@ -108,9 +108,9 @@ export default {
 			},
 			animation: {
 				// Surveillance Animations
-				'scan': 'scan var(--scan-duration) linear infinite',
-				'glitch': 'glitch var(--glitch-duration) linear',
-				'nav-glitch': 'nav-glitch var(--glitch-duration) linear',
+				'scan': 'scan 2s linear infinite',
+				'glitch': 'glitch 120ms linear',
+				'nav-glitch': 'nav-glitch 120ms linear',
 				'pulse-status': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				
 				// Enhanced existing animations
