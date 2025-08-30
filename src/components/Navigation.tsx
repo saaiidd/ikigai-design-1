@@ -17,7 +17,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Wordmark */}
           <div className="font-surveillance text-xl tracking-wide">
-            <span className="glitch-hover cursor-surveillance">ARCHIVE/NOIR</span>
+            <span className="glitch-hover cursor-surveillance">IKIGAI</span>
           </div>
 
           {/* Desktop Navigation */}

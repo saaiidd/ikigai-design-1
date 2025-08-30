@@ -24,27 +24,27 @@ const Hero = () => {
         {/* Status Indicator */}
         <div className="inline-flex items-center mb-8 text-xs font-terminal tracking-wider">
           <span className="status-indicator" />
-          <span className="redacted-bar">SIGNAL ACQUIRED</span>
+          <span className="redacted-bar">SYSTEM ONLINE</span>
         </div>
 
         {/* Main Headlines */}
         <h1 className="mb-6">
           <div className="font-surveillance text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-2">
-            <span className="glitch-hover">SURVEILLANCE-GRADE</span>
+            <span className="glitch-hover">SIMPLE, MODERN</span>
           </div>
           <div className="font-surveillance text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none">
-            <span className="glitch-hover">DESIGN</span>
+            <span className="glitch-hover">WEBSITES</span>
           </div>
         </h1>
 
         {/* Subheadline */}
         <div className="mb-12">
           <p className="font-surveillance text-lg md:text-xl lg:text-2xl font-light tracking-wide text-foreground/90">
-            ANALOG SOUL. DIGITAL PRECISION.
+            MAKE IDEAS USABLE ONLINE.
           </p>
           <div className="mt-4 font-terminal text-sm text-accent">
             <span className="inline-block border border-accent/30 px-3 py-1">
-              CLASSIFIED: LEVEL 7 CLEARANCE
+              CLARITY • SPEED • AFFORDABILITY
             </span>
           </div>
         </div>
@@ -52,10 +52,10 @@ const Hero = () => {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button className="btn-surveillance px-8 py-3">
-            VIEW CASES
+            VIEW WORK
           </button>
           <button className="btn-terminal px-8 py-3">
-            &gt; OPEN_JOURNAL.EXE
+            &gt; START_PROJECT.EXE
           </button>
         </div>
 
@@ -72,10 +72,10 @@ const Hero = () => {
             </div>
             <div className="p-4 text-left">
               <div className="font-terminal text-xs leading-relaxed">
-                <div>&gt; surveillance_mode: ACTIVE</div>
-                <div>&gt; cameras_online: 247</div>
+                <div>&gt; websites_deployed: 127</div>
+                <div>&gt; client_satisfaction: 98.7%</div>
                 <div>&gt; last_update: {new Date().toISOString().split('T')[0]}</div>
-                <div>&gt; status: <span className="text-foreground">OPERATIONAL</span></div>
+                <div>&gt; status: <span className="text-foreground">READY_TO_BUILD</span></div>
               </div>
             </div>
           </div>
