@@ -19,39 +19,70 @@ export default {
 		},
 		extend: {
 			colors: {
-				border: 'hsl(var(--border))',
-				input: 'hsl(var(--input))',
-				ring: 'hsl(var(--ring))',
+				// Surveillance Color System
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				surface: 'hsl(var(--surface))',
+				'surface-foreground': 'hsl(var(--surface-foreground))',
+				
+				// Core Palette
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					hover: 'hsl(var(--primary-hover))'
 				},
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+				accent: {
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))',
+					subtle: 'hsl(var(--accent-subtle))'
+				},
+				
+				// Terminal System
+				terminal: {
+					DEFAULT: 'hsl(var(--terminal))',
+					foreground: 'hsl(var(--terminal-foreground))',
+					accent: 'hsl(var(--terminal-accent))'
+				},
+				
+				// HUD Elements
+				hud: {
+					grid: 'hsl(var(--hud-grid))',
+					overlay: 'hsl(var(--hud-overlay))'
+				},
+				
+				// Border System
+				border: {
+					DEFAULT: 'hsl(var(--border))',
+					accent: 'hsl(var(--border-accent))'
+				},
+				divider: 'hsl(var(--divider))',
+				
+				// States
+				muted: {
+					DEFAULT: 'hsl(var(--muted))',
+					foreground: 'hsl(var(--muted-foreground))'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
 				},
-				muted: {
-					DEFAULT: 'hsl(var(--muted))',
-					foreground: 'hsl(var(--muted-foreground))'
-				},
-				accent: {
-					DEFAULT: 'hsl(var(--accent))',
-					foreground: 'hsl(var(--accent-foreground))'
+				
+				// Legacy support (keeping minimal compatibility)
+				input: 'hsl(var(--border))',
+				ring: 'hsl(var(--border-accent))',
+				card: {
+					DEFAULT: 'hsl(var(--surface))',
+					foreground: 'hsl(var(--surface-foreground))'
 				},
 				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
+					DEFAULT: 'hsl(var(--surface))',
+					foreground: 'hsl(var(--surface-foreground))'
 				},
-				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
+				secondary: {
+					DEFAULT: 'hsl(var(--accent-subtle))',
+					foreground: 'hsl(var(--accent-foreground))'
 				},
+				
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -63,12 +94,52 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				surveillance: ['Oswald', 'Arial Narrow', 'sans-serif'],
+				terminal: ['JetBrains Mono', 'Courier New', 'monospace'],
+				mono: ['JetBrains Mono', 'Courier New', 'monospace']
+			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				surveillance: 'var(--radius-surveillance)',
+				minimal: 'var(--radius-minimal)',
+				lg: 'var(--radius-minimal)',
+				md: 'calc(var(--radius-minimal) - 1px)',
+				sm: '1px'
+			},
+			animation: {
+				// Surveillance Animations
+				'scan': 'scan var(--scan-duration) linear infinite',
+				'glitch': 'glitch var(--glitch-duration) linear',
+				'nav-glitch': 'nav-glitch var(--glitch-duration) linear',
+				'pulse-status': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+				
+				// Enhanced existing animations
+				'accordion-down': 'accordion-down 0.2s ease-out',
+				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			keyframes: {
+				// Surveillance Keyframes
+				'scan': {
+					'0%': { left: '-100%' },
+					'100%': { left: '100%' }
+				},
+				'glitch': {
+					'0%, 100%': { transform: 'translate(0)' },
+					'20%': { transform: 'translate(-1px, 1px)' },
+					'40%': { transform: 'translate(-1px, -1px)' },
+					'60%': { transform: 'translate(1px, 1px)' },
+					'80%': { transform: 'translate(1px, -1px)' }
+				},
+				'nav-glitch': {
+					'0%, 100%': { transform: 'scaleX(1)' },
+					'50%': { transform: 'scaleX(1.02) skewX(-2deg)' }
+				},
+				'pulse': {
+					'0%, 100%': { opacity: '1' },
+					'50%': { opacity: '0.3' }
+				},
+				
+				// Existing keyframes
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -85,10 +156,6 @@ export default {
 						height: '0'
 					}
 				}
-			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
 			}
 		}
 	},

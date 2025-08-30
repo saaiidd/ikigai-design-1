@@ -1,42 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Oswald:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* SURVEILLANCE-GRADE DESIGN SYSTEM */
+/* Pure black/white aesthetic with terminal precision */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Surveillance Palette */
+    --background: 0 0% 0%;           /* Pure black */
+    --foreground: 0 0% 100%;         /* Pure white */
+    --surface: 0 0% 5%;              /* Near black for cards */
+    --surface-foreground: 0 0% 100%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Accent System */
+    --accent: 0 0% 48%;              /* Mid-gray for micro-accents */
+    --accent-foreground: 0 0% 100%;
+    --accent-subtle: 0 0% 15%;       /* Dark gray for subtle elements */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    /* Interactive States */
+    --primary: 0 0% 100%;            /* White for primary actions */
+    --primary-foreground: 0 0% 0%;   /* Black text on white */
+    --primary-hover: 0 0% 90%;       /* Slight gray on hover */
+    
+    /* Terminal Elements */
+    --terminal: 0 0% 0%;
+    --terminal-foreground: 0 0% 100%;
+    --terminal-accent: 0 0% 48%;
+    
+    /* Surveillance HUD */
+    --hud-grid: 0 0% 100%;
+    --hud-overlay: 0 0% 100%;
+    --scanning-line: 0 0% 100%;
+    
+    /* Borders & Dividers */
+    --border: 0 0% 20%;              /* Dark gray borders */
+    --border-accent: 0 0% 100%;      /* White borders for emphasis */
+    --divider: 0 0% 15%;             /* Subtle dividers */
+    
+    /* States */
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+    --destructive: 0 0% 100%;
+    --destructive-foreground: 0 0% 0%;
+    
+    /* Design Tokens */
+    --radius-surveillance: 0px;       /* Hard edges only */
+    --radius-minimal: 2px;           /* Micro-radius for subtle elements */
+    
+    /* Film Grain & Texture */
+    --grain-opacity: 0.03;
+    --noise-opacity: 0.02;
+    --vignette-opacity: 0.1;
+    
+    /* Animation Timings */
+    --glitch-duration: 120ms;
+    --scan-duration: 2000ms;
+    --hover-duration: 150ms;
 
     --sidebar-background: 0 0% 98%;
 
@@ -92,6 +114,13 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  /* Surveillance-specific tokens override */
+  .surveillance-mode {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --surface: 0 0% 5%;
+  }
 }
 
 @layer base {
@@ -100,6 +129,269 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono antialiased;
+    cursor: crosshair;
+  }
+
+  /* Typography System */
+  .font-surveillance {
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .font-terminal {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-feature-settings: 'liga' off;
+  }
+
+  /* Cursor States */
+  .cursor-surveillance {
+    cursor: crosshair;
+  }
+
+  .cursor-target::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid hsl(var(--foreground));
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@layer components {
+  /* Surveillance Button System */
+  .btn-surveillance {
+    @apply font-surveillance uppercase tracking-wider text-sm;
+    @apply border border-foreground bg-transparent px-6 py-2;
+    @apply transition-all duration-[var(--hover-duration)];
+    @apply hover:bg-foreground hover:text-background;
+    @apply focus:outline-none focus:ring-1 focus:ring-foreground;
+  }
+
+  .btn-ghost {
+    @apply border-0 bg-transparent hover:bg-white/5;
+  }
+
+  .btn-terminal {
+    @apply font-terminal text-xs border border-accent;
+    @apply bg-terminal text-terminal-foreground;
+    @apply hover:bg-accent hover:text-background;
+  }
+
+  /* HUD Elements */
+  .hud-overlay {
+    position: relative;
+  }
+
+  .hud-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(0deg, transparent 24%, hsl(var(--hud-grid) / 0.02) 25%, hsl(var(--hud-grid) / 0.02) 26%, transparent 27%, transparent 74%, hsl(var(--hud-grid) / 0.02) 75%, hsl(var(--hud-grid) / 0.02) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, hsl(var(--hud-grid) / 0.02) 25%, hsl(var(--hud-grid) / 0.02) 26%, transparent 27%, transparent 74%, hsl(var(--hud-grid) / 0.02) 75%, hsl(var(--hud-grid) / 0.02) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Scanning Lines */
+  .scanning-lines {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scanning-lines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--scanning-line) / 0.6), transparent);
+    animation: scan var(--scan-duration) linear infinite;
+    z-index: 2;
+  }
+
+  /* Film Grain */
+  .film-grain {
+    position: relative;
+  }
+
+  .film-grain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Contact Sheet Frame */
+  .contact-frame {
+    @apply relative bg-surface border border-accent/20 p-1;
+    box-shadow: inset 0 0 20px hsl(var(--background) / 0.8);
+  }
+
+  .contact-frame::before {
+    content: attr(data-frame-number);
+    @apply absolute -top-3 left-1 text-xs font-terminal text-accent;
+  }
+
+  /* Terminal Window */
+  .terminal-window {
+    @apply bg-terminal border border-accent/30 font-terminal text-sm;
+  }
+
+  .terminal-header {
+    @apply flex items-center justify-between px-3 py-2 border-b border-accent/30;
+    @apply bg-accent-subtle;
+  }
+
+  .terminal-dots {
+    @apply flex gap-2;
+  }
+
+  .terminal-dot {
+    @apply w-2 h-2 rounded-full bg-accent/50;
+  }
+
+  /* Glitch Effects */
+  .glitch-hover:hover {
+    animation: glitch var(--glitch-duration) linear;
+  }
+
+  /* Navigation Underline */
+  .nav-link {
+    @apply relative transition-colors duration-[var(--hover-duration)];
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-foreground;
+    @apply scale-x-0 transition-transform duration-[var(--hover-duration)] origin-right;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100 origin-left;
+    animation: nav-glitch var(--glitch-duration) linear var(--hover-duration);
+  }
+
+  /* EXIF Overlay */
+  .exif-overlay {
+    @apply absolute bottom-2 left-2 bg-background/90 px-2 py-1;
+    @apply text-xs font-terminal text-foreground/80 border border-accent/30;
+  }
+
+  /* Redacted Bar */
+  .redacted-bar {
+    @apply bg-foreground text-background px-2 py-0.5;
+    @apply text-xs font-terminal tracking-wider;
+  }
+
+  /* Status Indicator */
+  .status-indicator {
+    @apply inline-block w-2 h-2 bg-foreground mr-2;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@layer utilities {
+  /* Custom Utilities */
+  .text-surveillance {
+    @apply font-surveillance text-foreground;
+  }
+
+  .text-terminal {
+    @apply font-terminal text-foreground;
+  }
+
+  .border-surveillance {
+    border: 1px solid hsl(var(--border-accent));
+  }
+
+  .bg-surveillance {
+    background: hsl(var(--background));
+  }
+
+  .bg-surface {
+    background: hsl(var(--surface));
+  }
+
+  /* Animation Utilities */
+  .animate-scan {
+    animation: scan var(--scan-duration) linear infinite;
+  }
+
+  .animate-glitch {
+    animation: glitch var(--glitch-duration) linear;
+  }
+
+  /* Responsive Grid */
+  .grid-contact-sheet {
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .grid-contact-sheet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .grid-contact-sheet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* Keyframes */
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(-1px, -1px); }
+  60% { transform: translate(1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+}
+
+@keyframes nav-glitch {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(1.02) skewX(-2deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .glitch-hover:hover,
+  .nav-link:hover::after,
+  .scanning-lines::after {
+    animation: none;
+  }
+  
+  .status-indicator {
+    animation: none;
   }
 }
