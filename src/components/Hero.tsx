@@ -1,4 +1,5 @@
 import heroImage from '@/assets/hero-surveillance.jpg';
+import InteractiveTerminal from './InteractiveTerminal';
 
 const Hero = () => {
   return (
@@ -59,26 +60,61 @@ const Hero = () => {
           </button>
         </div>
 
-        {/* Terminal Info */}
+        {/* Interactive Terminal */}
         <div className="mt-16 max-w-md mx-auto">
-          <div className="terminal-window">
-            <div className="terminal-header">
-              <span className="font-terminal text-xs">SYSTEM STATUS</span>
-              <div className="terminal-dots">
-                <div className="terminal-dot" />
-                <div className="terminal-dot" />
-                <div className="terminal-dot" />
-              </div>
-            </div>
-            <div className="p-4 text-left">
-              <div className="font-terminal text-xs leading-relaxed">
-                <div>&gt; websites_deployed: 127</div>
-                <div>&gt; client_satisfaction: 98.7%</div>
-                <div>&gt; last_update: {new Date().toISOString().split('T')[0]}</div>
-                <div>&gt; status: <span className="text-foreground">READY_TO_BUILD</span></div>
-              </div>
-            </div>
-          </div>
+          <InteractiveTerminal 
+            title="SYSTEM STATUS"
+            initialOutput={[
+              `> websites_deployed: 127`,
+              `> client_satisfaction: 98.7%`,
+              `> last_update: ${new Date().toISOString().split('T')[0]}`,
+              `> status: READY_TO_BUILD`
+            ]}
+            availableCommands={{
+              'status': {
+                command: 'status',
+                output: [
+                  'System Status: OPERATIONAL',
+                  'Active Projects: 12',
+                  'Queue: 3 pending builds',
+                  'Server Load: 23%',
+                  'All systems green.'
+                ]
+              },
+              'deploy': {
+                command: 'deploy',
+                output: [
+                  'Initiating deployment sequence...',
+                  'Building optimized assets...',
+                  'Uploading to secure servers...',
+                  'Deployment complete!',
+                  'Site is now live at: https://your-site.com'
+                ],
+                type: 'success'
+              },
+              'stats': {
+                command: 'stats',
+                output: [
+                  'Performance Metrics:',
+                  '• Page Load Time: <0.8s',
+                  '• Lighthouse Score: 98/100',
+                  '• Uptime: 99.97%',
+                  '• Security Rating: A+',
+                  '• Client Retention: 94%'
+                ]
+              },
+              'clients': {
+                command: 'clients',
+                output: [
+                  'Recent Client Activity:',
+                  '• TechCorp - Site launched',
+                  '• StartupXYZ - In development', 
+                  '• LocalBiz - Redesign complete',
+                  '• All clients satisfied ✓'
+                ]
+              }
+            }}
+          />
         </div>
       </div>
 

@@ -1,3 +1,5 @@
+import InteractiveTerminal from './InteractiveTerminal';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
@@ -5,34 +7,70 @@ const Footer = () => {
     <footer id="contact" className="py-16 px-6 border-t border-divider">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-3 gap-12">
-          {/* Contact Terminal */}
+          {/* Interactive Contact Terminal */}
           <div className="md:col-span-2">
-            <div className="terminal-window">
-              <div className="terminal-header">
-                <span className="font-terminal text-xs">SECURE_CONTACT.EXE</span>
-                <div className="terminal-dots">
-                  <div className="terminal-dot" />
-                  <div className="terminal-dot" />
-                  <div className="terminal-dot" />
-                </div>
-              </div>
-              <div className="p-6 space-y-4">
-                <div className="font-terminal text-sm">
-                  <div className="text-accent mb-4">
-                    &gt; establishing_secure_connection...
-                  </div>
-                  <div className="space-y-2">
-                    <div>&gt; email: surveillance@archive-noir.net</div>
-                    <div>&gt; signal: encrypted_channel_available</div>
-                    <div>&gt; location: classified_coordinates</div>
-                    <div>&gt; response_time: &lt; 24_hours</div>
-                  </div>
-                  <div className="mt-6 text-accent">
-                    &gt; connection_status: <span className="text-foreground">SECURED</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <InteractiveTerminal 
+              title="SECURE_CONTACT.EXE"
+              initialOutput={[
+                '> establishing_secure_connection...',
+                '> email: hello@ikigai.dev',
+                '> signal: encrypted_channel_available',
+                '> location: classified_coordinates', 
+                '> response_time: < 24_hours',
+                '> connection_status: SECURED'
+              ]}
+              availableCommands={{
+                'contact': {
+                  command: 'contact',
+                  output: [
+                    'Contact Information:',
+                    'Email: hello@ikigai.dev',
+                    'Response Time: < 24 hours',
+                    'Consultation: Free',
+                    'Project Start: 1-2 weeks',
+                    'All communications encrypted.'
+                  ]
+                },
+                'services': {
+                  command: 'services',
+                  output: [
+                    'Available Services:',
+                    '• Website Development',
+                    '• UI/UX Design', 
+                    '• Performance Optimization',
+                    '• Maintenance & Support',
+                    '• Custom Web Applications',
+                    'Simple. Modern. Affordable.'
+                  ]
+                },
+                'quote': {
+                  command: 'quote',
+                  output: [
+                    'Project Quote Process:',
+                    '1. Send project details to hello@ikigai.dev',
+                    '2. Free consultation call',
+                    '3. Custom quote within 24h',
+                    '4. Clear timeline & pricing',
+                    'No hidden fees. No surprises.'
+                  ],
+                  type: 'success'
+                },
+                'team': {
+                  command: 'team',
+                  output: [
+                    'Team Ikigai:',
+                    'b3hold - Lead Engineer',
+                    '• Full-stack development',
+                    '• Computer Engineering graduate',
+                    '',
+                    'alcatraz.js - Design Lead', 
+                    '• UI/UX Design',
+                    '• Computer Engineering graduate'
+                  ]
+                }
+              }}
+              className="h-80"
+            />
           </div>
 
           {/* ASCII Map & Metadata */}

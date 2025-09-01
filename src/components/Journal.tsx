@@ -1,3 +1,5 @@
+import InteractiveTerminal from './InteractiveTerminal';
+
 const Journal = () => {
   const signals = [
     {
@@ -107,25 +109,64 @@ const Journal = () => {
           ))}
         </div>
 
-        {/* Terminal Footer */}
+        {/* Interactive Archive Terminal */}
         <div className="mt-16">
-          <div className="terminal-window max-w-md mx-auto">
-            <div className="terminal-header">
-              <span className="font-terminal text-xs">SIGNAL_ARCHIVE.DB</span>
-              <div className="terminal-dots">
-                <div className="terminal-dot" />
-                <div className="terminal-dot" />
-                <div className="terminal-dot" />
-              </div>
-            </div>
-            <div className="p-4 text-center">
-              <div className="font-terminal text-xs mb-3 text-accent">
-                &gt; query --all --classified
-              </div>
-              <button className="btn-terminal">
-                VIEW_ARCHIVE --full-access
-              </button>
-            </div>
+          <div className="max-w-md mx-auto">
+            <InteractiveTerminal 
+              title="SIGNAL_ARCHIVE.DB"
+              initialOutput={[
+                '> query --all --classified',
+                'Database connected. Type "search" to begin.'
+              ]}
+              availableCommands={{
+                'search': {
+                  command: 'search',
+                  output: [
+                    'Searching classified archives...',
+                    'Found 847 signals',
+                    '• 234 encrypted files',
+                    '• 156 declassified reports', 
+                    '• 457 active investigations',
+                    'Use "list" to view entries'
+                  ]
+                },
+                'list': {
+                  command: 'list',
+                  output: [
+                    'Recent Signal Entries:',
+                    '1. SURVEILLANCE_PATTERNS [ENCRYPTED]',
+                    '2. CONTACT_ARCHAEOLOGY [DECLASSIFIED]',
+                    '3. FLASH_FORENSICS [ACTIVE]',
+                    '4. DIGITAL_SHADOWS [CLASSIFIED]',
+                    '5. URBAN_INTEL [PENDING]'
+                  ]
+                },
+                'decrypt': {
+                  command: 'decrypt',
+                  output: [
+                    'Attempting decryption...',
+                    'Access granted.',
+                    'Signal contains:',
+                    '• Visual investigation methods',
+                    '• Surveillance photography techniques', 
+                    '• Case study documentation',
+                    'Full archive access available.'
+                  ],
+                  type: 'success'
+                },
+                'archive': {
+                  command: 'archive',
+                  output: [
+                    'Archive Statistics:',
+                    'Total Entries: 847',
+                    'Storage Used: 2.3TB',
+                    'Oldest Entry: 2019-03-15',
+                    'Most Recent: Today',
+                    'Classification Levels: 5'
+                  ]
+                }
+              }}
+            />
           </div>
         </div>
       </div>
