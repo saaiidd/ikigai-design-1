@@ -29,11 +29,17 @@ const Hero = () => {
 
         {/* Main Headlines */}
         <h1 className="mb-6">
-          <div className="font-surveillance text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-2">
-            <span className="glitch-hover">WEB STUDIO</span>
+          <div className="font-surveillance text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none mb-2 relative">
+            <div className="wd2-glitch wd2-pixel-sort wd2-fragment" data-text="WEB STUDIO">
+              <div className="wd2-datamosh"></div>
+              WEB STUDIO
+            </div>
           </div>
-          <div className="font-surveillance text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none">
-            <span className="glitch-hover">IKIGAI</span>
+          <div className="font-surveillance text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none relative">
+            <div className="wd2-glitch wd2-pixel-sort wd2-fragment" data-text="IKIGAI">
+              <div className="wd2-datamosh"></div>
+              IKIGAI
+            </div>
           </div>
         </h1>
 
