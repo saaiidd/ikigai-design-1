@@ -1,28 +1,28 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
-import ContactSheet from '@/components/ContactSheet';
-import Journal from '@/components/Journal';
+import Portfolio from '@/components/Portfolio';
+import Services from '@/components/Services';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
-    <div className="surveillance-mode min-h-screen bg-background text-foreground cursor-surveillance">
+    <div className="studio-mode min-h-screen bg-background text-foreground cursor-surveillance">
       {/* Global Navigation */}
       <Navigation />
       
       {/* Main Content */}
       <main>
-        {/* Hero Section with Surveillance Overlay */}
+        {/* Hero Section */}
         <Hero />
         
-        {/* Case Studies / Contact Sheet Gallery */}
-        <ContactSheet />
+        {/* Portfolio Showcase */}
+        <Portfolio />
         
-        {/* Journal / Signals */}
-        <Journal />
+        {/* Services & Insights */}
+        <Services />
         
-        {/* About / Manifesto */}
+        {/* About Studio */}
         <About />
       </main>
       

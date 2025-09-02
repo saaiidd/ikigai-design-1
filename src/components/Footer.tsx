@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="terminal-window">
               <div className="terminal-header">
-                <span className="font-terminal text-xs">SECURE_CONTACT.EXE</span>
+                <span className="font-terminal text-xs">STUDIO_CONTACT.EXE</span>
                 <div className="terminal-dots">
                   <div className="terminal-dot" />
                   <div className="terminal-dot" />
@@ -19,16 +19,17 @@ const Footer = () => {
               <div className="p-6 space-y-4">
                 <div className="font-terminal text-sm">
                   <div className="text-accent mb-4">
-                    &gt; establishing_secure_connection...
+                    &gt; establishing_connection...
                   </div>
                   <div className="space-y-2">
-                    <div>&gt; email: surveillance@archive-noir.net</div>
-                    <div>&gt; signal: encrypted_channel_available</div>
-                    <div>&gt; location: classified_coordinates</div>
+                    <div>&gt; email: hello@ikigai-web.dev</div>
+                    <div>&gt; discord: available_for_consultation</div>
+                    <div>&gt; timezone: available_globally</div>
                     <div>&gt; response_time: &lt; 24_hours</div>
+                    <div>&gt; project_slots: open_for_bookings</div>
                   </div>
                   <div className="mt-6 text-accent">
-                    &gt; connection_status: <span className="text-foreground">SECURED</span>
+                    &gt; connection_status: <span className="text-foreground">READY_TO_BUILD</span>
                   </div>
                 </div>
               </div>
@@ -37,18 +38,18 @@ const Footer = () => {
 
           {/* ASCII Map & Metadata */}
           <div className="space-y-6">
-            {/* ASCII City Map */}
+            {/* ASCII Studio Layout */}
             <div>
               <div className="font-surveillance text-sm font-semibold mb-3">
-                OPERATIONAL AREA
+                STUDIO SETUP
               </div>
               <div className="font-terminal text-xs text-accent leading-none">
                 <pre className="whitespace-pre">
 {`┌─────────┐
-│ █ ▄ █ ▄ │
-│ ▄ █ ▄ █ │  GRID_47N
-│ █ ▄ ● ▄ │  SECTOR_C
-│ ▄ █ ▄ █ │
+│ ◯ ▢ ◯ ▢ │
+│ ▢ ◯ ● ◯ │  DESK_01
+│ ◯ ▢ ◯ ▢ │  WORKSTATION
+│ ▢ ◯ ▢ ◯ │
 └─────────┘`}
                 </pre>
               </div>
@@ -57,13 +58,13 @@ const Footer = () => {
             {/* System Metadata */}
             <div>
               <div className="font-surveillance text-sm font-semibold mb-3">
-                SYSTEM_METADATA
+                STUDIO_METADATA
               </div>
               <div className="font-terminal text-xs text-muted-foreground space-y-1">
-                <div>build_v2.1.7</div>
-                <div>surveillance_protocol: active</div>
-                <div>uptime: 247.days</div>
-                <div>last_backup: {new Date().toISOString().split('T')[0]}</div>
+                <div>version: v2.1.7</div>
+                <div>status: accepting_projects</div>
+                <div>uptime: 100%</div>
+                <div>last_deploy: {new Date().toISOString().split('T')[0]}</div>
               </div>
             </div>
           </div>
@@ -74,12 +75,12 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             {/* Copyright */}
             <div className="font-terminal text-xs text-muted-foreground">
-              © {currentYear} ARCHIVE/NOIR. All surveillance data classified.
+              © {currentYear} IKIGAI WEB STUDIO. All projects crafted with precision.
             </div>
 
             {/* Site Navigation */}
             <div className="flex items-center gap-6">
-              {['WORK', 'JOURNAL', 'ABOUT', 'CONTACT'].map((item) => (
+              {['PORTFOLIO', 'SERVICES', 'ABOUT', 'CONTACT'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -93,14 +94,14 @@ const Footer = () => {
             {/* Status */}
             <div className="flex items-center font-terminal text-xs">
               <span className="status-indicator" />
-              <span className="text-accent">OPERATIONAL</span>
+              <span className="text-accent">STUDIO_ONLINE</span>
             </div>
           </div>
 
-          {/* Security Notice */}
+          {/* Client Notice */}
           <div className="mt-6 text-center">
             <div className="font-terminal text-xs text-accent/70">
-              This site is under surveillance. All interactions are monitored and logged.
+              Ready to bring your ideas online. Let's build something amazing together.
             </div>
           </div>
         </div>
