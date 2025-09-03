@@ -53,6 +53,11 @@ const Hero = () => {
               DESIGN • DEVELOPMENT • DEPLOYMENT
             </span>
           </div>
+          <div className="mt-3 font-terminal text-xs text-muted-foreground">
+            <a href="#story" className="nav-link cursor-surveillance hover:text-foreground transition-colors">
+              Our story →
+            </a>
+          </div>
         </div>
 
         {/* Action Buttons */}
